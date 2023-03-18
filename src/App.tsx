@@ -12,7 +12,7 @@ function App() {
     <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/courses" element={<CoursesPage />}></Route>
-        <Route path="/courses/id" element={<SingleCoursePage />}></Route>
+        <Route path="/courses/some-id" element={<SingleCoursePage />}></Route>
       </Routes>
     </>
   );
