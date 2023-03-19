@@ -5,22 +5,13 @@ import { useSingleCourse } from "../hooks/singleCourse";
 
 export function SingleCoursePage() {
     const { courseId } = useParams();
-  
-    // useEffect(() => {
-    //     if (courseId) {
-          
-    //     } else return <span>nothing</span>; 
-    //   }, [])
 
-    //     const { course } = useSingleCourse(courseId)
-   
-    
-    // console.log(`Params: ${JSON.stringify(course)}`);
+    const { course } = useSingleCourse(courseId)
 
     return (
         <div className='container mx-auto max-w-2xl pt-5'>
 
-            {/* {course.map(course => <SingleCourse course={course} key={course.id} />)} */}
+            {course && <SingleCourse course={course} key={course.id} />}
 
         </div>
     )

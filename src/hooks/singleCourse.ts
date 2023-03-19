@@ -4,7 +4,7 @@ import { ICourse } from "../models/course_interface"
 
 const JWTToken = process.env.REACT_APP_TOKEN
 
-export function useSingleCourse(courseId: string ) {
+export function useSingleCourse(courseId: string | undefined ) {
     const [course, setCourse] = useState<ICourse>()
     
     useEffect(() => {

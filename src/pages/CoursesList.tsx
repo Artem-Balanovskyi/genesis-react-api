@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Course } from "../components/Course";
 import { useCourses } from "../hooks/courses";
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import PaginationBar from '../components/Pagination'
+import { Loader } from "../components/Loader";
+
+
+
 
 export function CoursesList() {
-    const { courses } = useCourses()
+    const { courses, loading, error } = useCourses()
     const [paginationNumber, setPaginationNumber] = useState(1)
 
     const handlePagination = (event: React.ChangeEvent<unknown>, page: number) => {
@@ -17,25 +17,16 @@ export function CoursesList() {
 
     return (
         <div className='container mx-auto max-w-2xl pt-5'>
+            
+            <Loader loading={loading}/>
 
             {courses.length > 0 && courses[paginationNumber - 1].map(course => <Course course={course} key={course.id} />)}
 
-            <div className="border py-2 px-4 rounded flex flex-col items-center mb-2">
-                {
-                    <Stack spacing={2}>
-                        <Pagination
-                            onChange={handlePagination}
-                            count={3}
-                            renderItem={(item) => (
-                                <PaginationItem
-                                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                                    {...item}
-                                />
-                            )}
-                        />
-                    </Stack>
-                }
-            </div>
+            {courses.length > 0 && <div className="border py-2 px-4 rounded flex flex-col items-center mb-2">
+
+                <PaginationBar handler={handlePagination} counter={courses.length} />
+
+            </div>}
         </div>
     )
 }
