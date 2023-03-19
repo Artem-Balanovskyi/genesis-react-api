@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ICourse } from "../models/course_interface";
 import ReactPlayer from 'react-player'
 import { Lesson } from "./Lesson";
@@ -8,12 +8,7 @@ interface CourseProps {
 }
 
 export function SingleCourse({ course }: CourseProps) {
-    const [details, setDetails] = useState(false)
-
-    const btnBgClassName = details ? 'bg-yellow-400' : 'bg-blue-400'
-
-    const btnClasses = ['py-2 px-4 border', btnBgClassName]
-
+    
     return (
         <div
             className="border py-2 px-4 rounded flex flex-col items-center mb-2"

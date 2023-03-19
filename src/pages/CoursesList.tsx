@@ -8,7 +8,7 @@ import { Loader } from "../components/Loader";
 
 
 export function CoursesList() {
-    const { courses, loading, error } = useCourses()
+    const { courses, loading } = useCourses()
     const [paginationNumber, setPaginationNumber] = useState(1)
 
     const handlePagination = (event: React.ChangeEvent<unknown>, page: number) => {

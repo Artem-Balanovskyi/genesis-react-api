@@ -24,13 +24,13 @@ export function Course({ course }: CourseProps) {
             onMouseEnter={handleMouseToggle}
             onMouseLeave={handleMouseToggle}
         >
-            { isPlaying && <ReactPlayer playing={isPlaying} url={course.meta.courseVideoPreview.link} controls muted/>}
+            { course.meta.courseVideoPreview?.link && isPlaying && <ReactPlayer playing={isPlaying} url={course.meta.courseVideoPreview?.link} controls muted/>}
             
             <img src={course.previewImageLink + '/cover.webp'} alt={course.title} />
             <p className="font-bold">{course.title}</p>
 
 
-            <Link to={course.id}>Course ID</Link>
+            <Link to={course.id}><span className="text-red-600 border py-2 px-4 flex items-center mb-2 font-bold">Push here to view this Course!</span></Link>
 
             <Button
                 onClick={() => setDetails(prev => !prev)}
