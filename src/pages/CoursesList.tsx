@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-export function CoursesPage() {
+export function CoursesList() {
     const { courses } = useCourses()
     const [paginationNumber, setPaginationNumber] = useState(1)
 
@@ -20,20 +20,22 @@ export function CoursesPage() {
 
             {courses.length > 0 && courses[paginationNumber - 1].map(course => <Course course={course} key={course.id} />)}
 
-            {
-                <Stack spacing={2}>
-                    <Pagination
-                        onChange={handlePagination}
-                        count={3}
-                        renderItem={(item) => (
-                            <PaginationItem
-                                slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                                {...item}
-                            />
-                        )}
-                    />
-                </Stack>
-            }
+            <div className="border py-2 px-4 rounded flex flex-col items-center mb-2">
+                {
+                    <Stack spacing={2}>
+                        <Pagination
+                            onChange={handlePagination}
+                            count={3}
+                            renderItem={(item) => (
+                                <PaginationItem
+                                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                                    {...item}
+                                />
+                            )}
+                        />
+                    </Stack>
+                }
+            </div>
         </div>
     )
 }

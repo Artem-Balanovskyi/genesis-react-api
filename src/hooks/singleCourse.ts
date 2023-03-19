@@ -10,14 +10,12 @@ export function useSingleCourse(courseId: string ) {
     useEffect(() => {
         fetchCourse()
     }, [])
-    
+
     const url = `https://api.wisey.app/api/v1/core/preview-courses/${courseId}` 
 
     async function fetchCourse() {
         const { data } = await axios.get<ICourse>(url , { headers: {"Authorization" : `Bearer ${JWTToken}`} })
         setCourse(data)
     }
-
-
     return { course }
 }

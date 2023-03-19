@@ -9,9 +9,7 @@ interface CourseProps {
 export function Course({ course }: CourseProps) {
     const [details, setDetails] = useState(false)
 
-    const btnBgClassName = details ? 'bg-yellow-400' : 'bg-blue-400'
-
-    const btnClasses = ['py-2 px-4 border', btnBgClassName]
+    const btnBgClassName = details ? 'primary' : 'secondary'
 
     return (
         <div
@@ -19,13 +17,13 @@ export function Course({ course }: CourseProps) {
         >
             <img src={course.previewImageLink + '/cover.webp'} alt={course.title} />
             <p className="font-bold">{course.title}</p>
-            <button
-                className={btnClasses.join(' ')}
-                onClick={() => setDetails(prev => !prev)}
-            >
-                {details ? 'Hide Details' : `Show Details`}
-            </button>
-            <Button variant="contained" color="secondary">Contained</Button>
+
+            <Button 
+            onClick={() => setDetails(prev => !prev)} 
+            variant="contained" 
+            color={btnBgClassName}
+            >{details ? 'Hide Details' : `Show Details`}</Button>
+
             {details && <div>
                 <p className="font-bold">{`Lessons count: ${course.lessonsCount}`}</p>
                 <p className="font-bold">Skills:</p>
