@@ -8,11 +8,13 @@ import { Navigation } from './components/Navigation';
 function App() {
   return (
     <>
-    <Navigation/>
-    <Routes>
+      <Navigation />
+      <Routes>
         <Route path="/" element={<MainPage />}></Route>
-        <Route path="/courses" element={<CoursesPage />}></Route>
-        <Route path="/courses/some-id" element={<SingleCoursePage />}></Route>
+        <Route path="/courses" element={<CoursesPage />}>
+          {/* <Route index element={<ProductsList />} /> */}
+          <Route path=":courseId" element={<SingleCoursePage />} />
+        </Route>
       </Routes>
     </>
   );

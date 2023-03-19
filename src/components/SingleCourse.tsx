@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { ICourse } from "../models/course_interface";
-import Button from '@mui/material/Button';
 
 interface CourseProps {
     course: ICourse
 }
 
-export function Course({ course }: CourseProps) {
+export function SingleCourse({ course }: CourseProps) {
     const [details, setDetails] = useState(false)
 
     const btnBgClassName = details ? 'bg-yellow-400' : 'bg-blue-400'
@@ -25,7 +24,6 @@ export function Course({ course }: CourseProps) {
             >
                 {details ? 'Hide Details' : `Show Details`}
             </button>
-            <Button variant="contained" color="secondary">Contained</Button>
             {details && <div>
                 <p className="font-bold">{`Lessons count: ${course.lessonsCount}`}</p>
                 <p className="font-bold">Skills:</p>
